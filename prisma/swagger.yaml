@@ -1,0 +1,22 @@
+openapi: 3.0.0
+info:
+  title: Weather Subscription API
+  version: 1.0.0
+paths:
+  /subscriptions:
+    post:
+      summary: Subscribe for weather updates
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                city:
+                  type: string
+      responses:
+        '201':
+          description: Subscription successful
