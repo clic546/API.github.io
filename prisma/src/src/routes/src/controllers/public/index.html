@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Weather Subscription</title>
+</head>
+<body>
+  <h1>Subscribe to Weather Updates</h1>
+  <form id="subForm">
+    <input type="email" name="email" placeholder="Email" required />
+    <input type="text" name="city" placeholder="City" required />
+    <button type="submit">Subscribe</button>
+  </form>
+
+  <script>
+    document.getElementById('subForm').onsubmit = async (e) => {
+      e.preventDefault();
+      const data = {
+        email: e.target.email.value,
+        city: e.target.city.value
+      };
+      await fetch('/subscriptions', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(data)
+      });
+      alert('Subscribed!');
+    };
+  </script>
+</body>
+</html>
